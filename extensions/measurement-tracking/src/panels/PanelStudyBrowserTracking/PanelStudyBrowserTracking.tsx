@@ -479,7 +479,11 @@ function _mapDisplaySets(
                   switch (action.id) {
                     case 'yes':
                       try {
-                        await dataSource.reject.series(ds.StudyInstanceUID, ds.SeriesInstanceUID);
+                        await dataSource.reject.series(
+                          ds.instance.PatientID,
+                          ds.StudyInstanceUID,
+                          ds.SeriesInstanceUID
+                        );
                         displaySetService.deleteDisplaySet(displaySetInstanceUID);
                         uiDialogService.dismiss({ id: 'ds-reject-sr' });
                         uiNotificationService.show({

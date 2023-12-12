@@ -35,6 +35,7 @@ dotenv.config();
 
 const defineValues = {
   /* Application */
+  'process.env.DCM_SERVER': JSON.stringify(process.env.DCM_SERVER),
   'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
   'process.env.NODE_DEBUG': JSON.stringify(process.env.NODE_DEBUG),
   'process.env.DEBUG': JSON.stringify(process.env.DEBUG),

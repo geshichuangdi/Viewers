@@ -21,9 +21,12 @@ window.config = {
       configuration: {
         friendlyName: 'local Orthanc DICOMWeb Server',
         name: 'DCM4CHEE',
+        // Web Access to Dicom Objects;
         wadoUriRoot: 'http://localhost/dicom-web',
+        // Query based on ID for Dicom Objects;
         qidoRoot: 'http://localhost/dicom-web',
         wadoRoot: 'http://localhost/dicom-web',
+        wadoRest: 'http://localhost/dicom-rest',
         qidoSupportsIncludeField: true,
         supportsReject: true,
         imageRendering: 'wadors',

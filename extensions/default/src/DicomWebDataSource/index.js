@@ -9,6 +9,7 @@ import {
   processSeriesResults,
 } from './qido.js';
 import dcm4cheeReject from './dcm4cheeReject';
+import orthancReject from './orthancReject';
 
 import getImageId from './utils/getImageId';
 import dcmjs from 'dcmjs';
@@ -506,7 +507,11 @@ function createDicomWebApi(dicomWebConfig, userAuthenticationService) {
   };
 
   if (dicomWebConfig.supportsReject) {
-    implementation.reject = dcm4cheeReject(dicomWebConfig.wadoRoot);
+    if (process.env.DCM_SERVER === 'orthanc') {
+      implementation.reject = orthancReject(dicomWebConfig.wadoRest);
+    } else {
+      implementation.reject = dcm4cheeReject(dicomWebConfig.wadoRest);
+    }
   }
 
   return IWebApiDataSource.create(implementation);
