@@ -210,18 +210,23 @@ function initVolume3DToolGroup(extensionManager, toolGroupService) {
 
   const tools = {
     active: [
+      // 3d视图, 左键拖动, 窗宽窗位(需修改源码@cornerstonejs/tools/src/tools/WindowLevelTool.ts, 详见dev.log)
       {
-        toolName: toolNames.TrackballRotateTool,
+        toolName: toolNames.WindowLevel,
         bindings: [{ mouseButton: Enums.MouseBindings.Primary }],
       },
+      // 右键拖动, 轨迹球控制;
       {
-        toolName: toolNames.Zoom,
+        toolName: toolNames.TrackballRotateTool,
         bindings: [{ mouseButton: Enums.MouseBindings.Secondary }],
       },
+      // 中键拖动, 移动;
       {
         toolName: toolNames.Pan,
         bindings: [{ mouseButton: Enums.MouseBindings.Auxiliary }],
       },
+      // 中键滚动, 缩放(需修改源码@cornerstonejs/tools/src/utilities/scroll.ts, 详见dev.log)
+      { toolName: toolNames.StackScrollMouseWheel, bindings: [] },
     ],
   };
 

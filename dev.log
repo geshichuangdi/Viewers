@@ -1,0 +1,24 @@
+node_modules/@ohif/extension-cornerstone/src 与文件 extensions/cornerstone/src 同步修改
+
+lerna 缓存路径 nx.json -> build.outputs -> platform/app/dist
+      webpack 缓存                      -> platform/app/node_modules/.cache
+
+valume3d ColorMaps 路径: node_modules/@kitware/vtk.js/Rendering/Core/ColorTransferFunction/ColorMaps.json.js
+
+valume3d displayPreset 路径: node_modules/@cornerstonejs/core/dist/esm/constants/viewportPresets.js
+
+node_modules/@cornerstonejs/core/src/RenderingEngine/BaseVolumeViewport.ts -> getActor(volumeId).actor...
+node_modules/@kitware/vtk.js/Rendering/Core/Volume.d.js
+
+// voxel 数据不能改, 四个视口公用同一个volume;
+// viewport.getActor(options.volumeId).actor.getMapper().getInputData().getPointData().getScalars().setData(viewport.getActor(options.volumeId).actor.getMapper().getInputData().getPointData().getScalars().getData().map(item => 0))
+
+node_modules/@cornerstonejs/tools/src/tools/WindowLevelTool.ts L:52
+if (viewport instanceof VolumeViewport || viewport instanceof VolumeViewport3D)
+
+node_modules/@cornerstonejs/tools/src/utilities/scroll.ts
+else if (viewport instanceof VolumeViewport3D) {
+    let vtkCamera = (viewport as any).getVtkActiveCamera();
+    vtkCamera.setParallelScale(vtkCamera.getParallelScale() * (1 + (delta * 0.1)));
+    viewport.render();
+}
